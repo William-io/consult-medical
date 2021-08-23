@@ -15,6 +15,15 @@ import { ConsultTodayComponent } from './pages/consult-today/consult-today.compo
 import { SheduledConsultComponent } from './pages/sheduled-consult/sheduled-consult.component';
 import { NewConsultComponent } from './pages/new-consult/new-consult.component';
 
+
+
+
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +41,10 @@ import { NewConsultComponent } from './pages/new-consult/new-consult.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

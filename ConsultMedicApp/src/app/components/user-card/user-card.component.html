@@ -1,8 +1,7 @@
 <div class="user-card">
-    <img src="https://icon-library.com/images/user-profile-icon/user-profile-icon-23.jpg" class="user-image"
-        alt="William-io">
+    <img src="{{ user.picture }}" class="user-image" alt="{{ user.name }}">
     <br>
-    William<br>
-    <small><a href="#">sair</a></small>
+    {{ user.name }} <br>
+    <small><a (click)="logout()">sair</a></small>
 
 </div>

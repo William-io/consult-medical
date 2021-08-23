@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "consult-medic": {
+      "hosting": {
+        "ConsultMedicApp": [
+          "consult-medic"
+        ]
+      }
+    }
+  }
+}
