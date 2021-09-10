@@ -23,27 +23,41 @@ namespace Consult.Domain.Infra.Repositories
 
         public IEnumerable<Consulting> GetAll(string user)
         {
-            return _context.Consultings.AsNoTracking().Where(ConsultQueries.GetAll(user)).OrderBy(x => x.Date);
-        }
-
-        public IEnumerable<Consulting> GetAllByDate(string user, DateTime date, bool done)
-        {
-            throw new NotImplementedException();
+            return _context.Consultings
+            .AsNoTracking()
+            .Where(ConsultQueries.GetAll(user))
+            .OrderBy(x => x.Date);
         }
 
         public IEnumerable<Consulting> GetAllDone(string user)
         {
-            throw new NotImplementedException();
+            return _context.Consultings
+            .AsNoTracking()
+            .Where(ConsultQueries.GetAllDone(user))
+            .OrderBy(x => x.Date);
         }
 
         public IEnumerable<Consulting> GetAllUndone(string user)
         {
-            throw new NotImplementedException();
+            return _context.Consultings
+            .AsNoTracking()
+            .Where(ConsultQueries.GetAllUndone(user))
+            .OrderBy(x => x.Date);
         }
 
         public Consulting GetById(Guid id, string user)
         {
-            throw new NotImplementedException();
+            return _context
+            .Consultings
+            .FirstOrDefault(x => x.Id == id && x.User == user);
+        }
+
+        public IEnumerable<Consulting> GetByPeriod(string user, DateTime date, bool done)
+        {
+            return _context.Consultings
+            .AsNoTracking()
+            .Where(ConsultQueries.GetByPeriod(user, date, done))
+            .OrderBy(x => x.Date);
         }
 
         public void Update(Consulting consulting)

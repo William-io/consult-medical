@@ -10,6 +10,11 @@ namespace Consult.Domain.Queries
             return x => x.User == user;
         }
 
+        public static Expression<Func<Consulting, bool>> GetAllDone(string user)
+        {
+            return x => x.User == user && x.Done == true;
+        }
+
         public static Expression<Func<Consulting, bool>> GetAllUndone(string user)
         {
             return x => x.User == user && x.Done == false;

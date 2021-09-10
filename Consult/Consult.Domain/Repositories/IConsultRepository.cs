@@ -15,7 +15,7 @@ namespace Consult.Domain.Repositories
         IEnumerable<Consulting> GetAll(string user);
         IEnumerable<Consulting> GetAllDone(string user);
         IEnumerable<Consulting> GetAllUndone(string user);
-        IEnumerable<Consulting> GetAllByDate(string user, DateTime date, bool done);
+        IEnumerable<Consulting> GetByPeriod(string user, DateTime date, bool done);
 
     }
 

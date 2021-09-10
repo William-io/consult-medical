@@ -1,5 +1,6 @@
 using Consult.Domain.Handlers;
 using Consult.Domain.Infra.Context;
+using Consult.Domain.Infra.Repositories;
 using Consult.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -37,14 +38,20 @@ namespace Consult.Domain.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Consult.Domain.Api v1"));
+                // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Consult.Domain.Api v1"));
+                // app.UseSwagger();
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
