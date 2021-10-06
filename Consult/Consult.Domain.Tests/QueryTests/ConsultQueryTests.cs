@@ -1,6 +1,9 @@
 using Consult.Domain.Entities;
 using Consult.Domain.Queries;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Consult.Domain.Tests.QueryTests
 {

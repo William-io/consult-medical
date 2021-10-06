@@ -3,6 +3,9 @@ using Consult.Domain.Infra.Context;
 using Consult.Domain.Queries;
 using Consult.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Consult.Domain.Infra.Repositories
 {

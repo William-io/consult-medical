@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Consult.Domain.Entities;
 using Consult.Domain.Repositories;
 
