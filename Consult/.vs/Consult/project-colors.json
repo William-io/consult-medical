@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f273e830-934c-4864-bfa6-e8b62a8302a6": {
+      "ProjectGuid": "f273e830-934c-4864-bfa6-e8b62a8302a6",
+      "DisplayName": "Consult.Domain.Api",
+      "ColorIndex": 0
+    },
+    "6ed97f22-49e6-4898-b70e-dfda29256119": {
+      "ProjectGuid": "6ed97f22-49e6-4898-b70e-dfda29256119",
+      "DisplayName": "Consult.Domain",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "236b3163-a507-4505-a9ff-576b00458d75": {
+      "ProjectGuid": "236b3163-a507-4505-a9ff-576b00458d75",
+      "DisplayName": "Consult.Domain.Infra",
+      "ColorIndex": 2
+    },
+    "7c4a1984-5d92-4cb7-9fb9-2fc91f643c3b": {
+      "ProjectGuid": "7c4a1984-5d92-4cb7-9fb9-2fc91f643c3b",
+      "DisplayName": "Consult.Domain.Tests",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
