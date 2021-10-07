@@ -25,7 +25,7 @@ namespace Consult.Domain.Api
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDbContext<ConsultContext>(options => options.UseInMemoryDatabase("Database"));
-            services.AddDbContext<ConsultContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ConnectionStrings")));
+            services.AddDbContext<ConsultContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IConsultRepository, ConsultRepository>();
             services.AddTransient<ConsultHandler, ConsultHandler>();
