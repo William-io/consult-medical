@@ -2,6 +2,7 @@ using Consult.Domain.Commands;
 using Consult.Domain.Entities;
 using Consult.Domain.Handlers;
 using Consult.Domain.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,24 +12,27 @@ namespace Consult.Domain.Api.Controllers
 {
     [ApiController]
     [Route("v1/consults")]
+    [Authorize]
     public class ConsultController : ControllerBase
     {
         [Route("")]
         [HttpGet]
-        public IEnumerable<Consulting> Getall(
-            [FromServices]IConsultRepository repository
+        public IEnumerable<Consulting> GetAll(
+            [FromServices] IConsultRepository repository
         )
         {
-            return repository.GetAll("williamvilela");
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetAll(user);
         }
 
         [Route("done")]
         [HttpGet]
-        public IEnumerable<Consulting> GetallDone(
-            [FromServices]IConsultRepository repository    
+        public IEnumerable<Consulting> GetAllDone(
+            [FromServices] IConsultRepository repository
         )
         {
-            return repository.GetAllDone("williamvilela");
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetAllDone(user);
         }
 
         [Route("undone")]
@@ -37,7 +41,8 @@ namespace Consult.Domain.Api.Controllers
             [FromServices] IConsultRepository repository
         )
         {
-            return repository.GetAllDone("williamvilela");
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return repository.GetAllUndone(user);
         }
 
         [Route("done/today")]
@@ -46,11 +51,12 @@ namespace Consult.Domain.Api.Controllers
             [FromServices] IConsultRepository repository
         )
         {
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return repository.GetByPeriod(
-                "williamvilela",
+                user,
                 DateTime.Now.Date,
                 true
-                );
+            );
         }
 
         [Route("undone/today")]
@@ -59,18 +65,19 @@ namespace Consult.Domain.Api.Controllers
             [FromServices] IConsultRepository repository
         )
         {
+            var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return repository.GetByPeriod(
-                "williamvilela",
+                user,
                 DateTime.Now.Date,
                 false
-                );
+            );
         }
 
         [Route("done/tomorrow")]
         [HttpGet]
         public IEnumerable<Consulting> GetDoneForTomorrow(
-           [FromServices] IConsultRepository repository
-       )
+            [FromServices] IConsultRepository repository
+        )
         {
             var user = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return repository.GetByPeriod(
@@ -94,7 +101,6 @@ namespace Consult.Domain.Api.Controllers
             );
         }
 
-
         [Route("")]
         [HttpPost]
         public GenericCommandResult Create(
@@ -102,7 +108,40 @@ namespace Consult.Domain.Api.Controllers
             [FromServices] ConsultHandler handler
         )
         {
-            command.User = "williamvilela";
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return (GenericCommandResult)handler.Handle(command);
+        }
+
+        [Route("")]
+        [HttpPut]
+        public GenericCommandResult Update(
+           [FromBody] UpdateConsultCommand command,
+           [FromServices] ConsultHandler handler
+       )
+        {
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return (GenericCommandResult)handler.Handle(command);
+        }
+
+        [Route("mark-as-done")]
+        [HttpPut]
+        public GenericCommandResult MarkAsDone(
+            [FromBody] MarkConsultDoneCommand command,
+            [FromServices] ConsultHandler handler
+        )
+        {
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+            return (GenericCommandResult)handler.Handle(command);
+        }
+
+        [Route("mark-as-undone")]
+        [HttpPut]
+        public GenericCommandResult MarkAsUndone(
+            [FromBody] MarkConsultUndoneCommand command,
+            [FromServices] ConsultHandler handler
+        )
+        {
+            command.User = User.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
             return (GenericCommandResult)handler.Handle(command);
         }
     }

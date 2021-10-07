@@ -14,13 +14,15 @@ import { AllComponent } from './pages/all/all.component';
 import { ConsultTodayComponent } from './pages/consult-today/consult-today.component';
 import { SheduledConsultComponent } from './pages/sheduled-consult/sheduled-consult.component';
 import { NewConsultComponent } from './pages/new-consult/new-consult.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 
 
@@ -42,6 +44,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
 
