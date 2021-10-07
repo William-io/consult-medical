@@ -2,12 +2,14 @@ using Consult.Domain.Handlers;
 using Consult.Domain.Infra.Context;
 using Consult.Domain.Infra.Repositories;
 using Consult.Domain.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace Consult.Domain.Api
@@ -29,6 +31,20 @@ namespace Consult.Domain.Api
 
             services.AddTransient<IConsultRepository, ConsultRepository>();
             services.AddTransient<ConsultHandler, ConsultHandler>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = "https://securetoken.google.com/consult-medic.firebaseapp.com";
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = "https://securetoken.google.com/consult-medic.firebaseapp.com",
+                        ValidateAudience = true,
+                        ValidAudience = "consult-medic.firebaseapp.com",
+                        ValidateLifetime = true
+                    };
+                });
 
 
             services.AddControllers();
