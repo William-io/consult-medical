@@ -1,7 +1,6 @@
 <div class="user-card">
-    <img src="https://placehold.it/200" class="user-image" alt="William Silva">
+    <img src="{{ user.picture }}" class="user-image" alt="{{ user.name }}">
     <br>
-    Débora <br>
-    <small><a href="#">Sair</a></small>
-
+    {{ user.name }} <br>
+    <small><a (click)="logout()">Sair</a></small>
 </div>

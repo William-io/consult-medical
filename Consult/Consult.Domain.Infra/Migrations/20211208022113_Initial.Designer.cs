@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Consult.Domain.Infra.Migrations
 {
     [DbContext(typeof(ConsultContext))]
-    [Migration("20211007135939_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20211208022113_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -35,13 +35,13 @@ namespace Consult.Domain.Api
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.Authority = "https://securetoken.google.com/consult-medic.firebaseapp.com";
+                    options.Authority = "https://securetoken.google.com/consult-medic";
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidIssuer = "https://securetoken.google.com/consult-medic.firebaseapp.com",
+                        ValidIssuer = "https://securetoken.google.com/consult-medic",
                         ValidateAudience = true,
-                        ValidAudience = "consult-medic.firebaseapp.com",
+                        ValidAudience = "consult-medic",
                         ValidateLifetime = true
                     };
                 });

@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
     });
-    this.afAuth.idToken.subscribe(token => console.log(token));
+    this.afAuth.idToken.subscribe(token => console.log(token)); //Desativar console token em produção
   }
 }
 
