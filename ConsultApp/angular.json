@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "ConsultApp:build:production",
+            "firebaseProject": "consult-medic",
+            "firebaseHostingSite": "consult-medic"
+          }
         }
       }
     }
