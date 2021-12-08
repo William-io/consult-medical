@@ -1,1 +1,4 @@
-<p>all works!</p>
+<i class="fa fa-spinner fa-spin fa-2x" *ngIf="!consults"></i>
+<ul *ngFor="let consult of consults">
+    <li>{{consult.description}}</li>
+</ul>

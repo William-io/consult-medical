@@ -1,20 +1,20 @@
-<form>
+<form [formGroup]="form">
     <h1>Nova consulta</h1>
     <br>
-    <textarea cols="30" rows="2" placeholder="ex: Consulta pediatrica"></textarea>
-    <small class="error">
+    <textarea cols="30" rows="2" placeholder="ex: Consulta pediatrica" formControlName="description"></textarea>
+    <small class="error" *ngIf="form.controls">
         <strong>Consulta inválida</strong>
     </small>
     <br>
     <h2>Quando?</h2>
-    <input type="date">
-    <small class="error">
+    <input type="date" formControlName="date">
+    <small class="error" *ngIf="form.controls">
         <strong>Data inválida</strong>
     </small>
     <br>
     <br>
     <p class="text-right">
-        <app-button>
+        <app-button (click)="submit()" [disabled]="form.invalid">
             <i class="fa fa-save"></i>
             Marcar consulta
         </app-button>
