@@ -1,1 +1,2 @@
-<app-consult-list></app-consult-list>
+<i class="fa fa-spinner fa-spin fa-2x" *ngIf="!consults"></i>
+<app-consult-list *ngIf="consults" [consults]="consults"></app-consult-list>

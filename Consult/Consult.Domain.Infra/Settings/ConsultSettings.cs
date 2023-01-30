@@ -16,8 +16,6 @@ namespace Consult.Domain.Infra.Settings
             builder.Property(x => x.Done).HasColumnType("bit");
             builder.Property(x => x.Date);
             builder.HasIndex(b => b.User);
-
         }
     }
-
 }
